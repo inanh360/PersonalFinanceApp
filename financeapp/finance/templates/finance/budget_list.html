@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>All Budgets</title>
+        <style>
+            body {
+                font-family: Arial, sans-serif;
+                background-color: #f4f4f4;
+                margin: 0;
+                padding: 0;
+                text-align: center;
+            }
+    
+            h1 {
+                background-color: #4CAF50;
+                color: white;
+                padding: 20px;
+                margin-bottom: 20px;
+            }
+    
+            table {
+                width: 80%;
+                margin: 0 auto;
+                border-collapse: collapse;
+                margin-top: 20px;
+                background-color: white;
+            }
+    
+            table, th, td {
+                border: 1px solid #ddd;
+            }
+    
+            th, td {
+                padding: 12px;
+                text-align: left;
+            }
+    
+            th {
+                background-color: #f2f2f2;
+                color: #333;
+            }
+    
+            tr:nth-child(even) {
+                background-color: #f9f9f9;
+            }
+    
+            tr:hover {
+                background-color: #f1f1f1;
+            }
+    
+            td, th {
+                text-align: center;
+            }
+    
+            a {
+                display: inline-block;
+                margin-top: 20px;
+                padding: 10px 20px;
+                text-decoration: none;
+                font-size: 16px;
+                background-color: #333;
+                color: white;
+                border-radius: 5px;
+            }
+    
+            a:hover {
+                background-color: #45a049;
+            }
+    
+            a:active {
+                background-color: #5a5a5a;
+            }
+    
+            /* Optional: Responsive design for smaller screens */
+            @media screen and (max-width: 600px) {
+                table {
+                    width: 100%;
+                    font-size: 14px;
+                }
+    
+                th, td {
+                    padding: 10px;
+                }
+            }
+        </style>
+    </head>
+<body>
+    <h1>All Budgets</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Category</th>
+                <th>Limit</th>
+                <th>Start Date</th>
+                <th>End Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for budget in budgets %}
+            <tr>
+                <td>{{ budget.category.name }}</td>
+                <td>{{ budget.limit }}</td>
+                <td>{{ budget.start_date }}</td>
+                <td>{{ budget.end_date }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <a href="{% url 'add_budget' %}">Add New Budget</a>
+</body>
+</html>

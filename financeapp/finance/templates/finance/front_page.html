@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Finance App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        h1 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        a {
+            display: inline-block;
+            margin: 15px;
+            padding: 10px 20px;
+            text-decoration: none;
+            font-size: 18px;
+            background-color: #333;
+            color: white;
+            border-radius: 5px;
+        }
+
+        a:hover {
+            background-color: #45a049;
+        }
+
+        a:active {
+            background-color: #5a5a5a;
+        }
+
+        /* Optionally add responsive design for smaller screens */
+        @media screen and (max-width: 600px) {
+            a {
+                margin: 10px;
+                font-size: 16px;
+                padding: 8px 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Finance App</h1>
+
+    <a href="{% url 'transaction_list' %}">Transactions</a>
+    <a href="{% url 'budget_list' %}">Budgets</a>
+    <a href="{% url 'budget_tracking' %}">Tracking</a>
+    <a href="{% url 'category_list' %}">Categories</a>
+
+</body>
+</html>
