@@ -54,3 +54,7 @@ class Budget(models.Model):
 
     def __str__(self):
         return f"{self.category} - {self.limit}"
+    
+class UserPostInfo(models.Model):
+    name = models.CharField(max_length=52)
+    postcode = models.ForeignKey("publicstats.PostcodeInfo", on_delete=models.CASCADE)

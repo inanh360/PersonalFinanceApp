@@ -8,6 +8,8 @@ from .forms import CategoryForm
 from .forms import BudgetForm
 from .forms import TransactionForm
 from .models import Budget
+from .models import UserPostInfo
+from publicstats.models import *
 from django.db.models import Sum
 
 def budget_tracking(request):
@@ -158,3 +160,8 @@ def transaction_list(request):
 
 def front_page(request):
     return render(request, 'finance/front_page.html')
+
+def testRef(request):
+    post = PostcodeInfo.objects.get(id=1)
+    use = UserPostInfo.objects.get(postcode=post)
+    return render(request, 'finance/test.html', {'user': use})

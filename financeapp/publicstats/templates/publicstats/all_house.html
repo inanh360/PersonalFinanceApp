@@ -1,0 +1,6 @@
+<!DOCTYPE html>
+<html>
+    {% for postcode in postcodes %}
+    <li><a href="{% url 'yearly_house' postcode.id %}">{{postcode.pcName}}</a></li>
+    {% endfor %}
+</html>
