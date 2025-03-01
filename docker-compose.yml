@@ -1,0 +1,35 @@
+services:
+  backend:
+    build: .
+    container_name: financeapp-backend  # Optional: Name the container
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./financeapp:/financeapp
+    depends_on:
+      - db
+
+  frontend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: financeapp-frontend
+    command: npm start  # This will run npm start, make sure npm is in $PATH
+    working_dir: /frontend
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./frontend:/frontend
+    depends_on:
+      - backend
+
+
+  db:
+    image: postgres:15
+    restart: always
+    environment:
+      POSTGRES_USER: user
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: mydatabase
+    ports:
+      - "5432:5432"
