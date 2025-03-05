@@ -1,7 +1,7 @@
 services:
   backend:
     build: .
-    container_name: financeapp-backend  # Optional: Name the container
+    container_name: financeapp-backend 
     ports:
       - "8000:8000"
     command: >
@@ -17,7 +17,7 @@ services:
       context: .
       dockerfile: Dockerfile
     container_name: financeapp-frontend
-    command: npm start  # This will run npm start, make sure npm is in $PATH
+    command: npm start
     working_dir: /frontend
     ports:
       - "3000:3000"
