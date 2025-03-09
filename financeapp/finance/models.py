@@ -76,3 +76,17 @@ class Budget(models.Model):
 class UserPostInfo(models.Model):
     name = models.CharField(max_length=52)
     postcode = models.ForeignKey("publicstats.PostcodeInfo", on_delete=models.CASCADE)
+
+class Salary(models.Model):
+    TYPE = (
+        ('1', 'daily'),
+        ('2', 'weekly'),
+        ('3', 'bi-weekly'),
+        ('4', 'monthly'),
+        ('5', 'yearly'),
+    )
+
+    name = models.CharField(max_length=52)
+    amount = models.IntegerField()
+    salary_type = models.IntegerField(choices=TYPE)
+    user = models.ForeignKey(FinanceUser, on_delete=models.CASCADE)
