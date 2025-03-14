@@ -9,12 +9,12 @@ from utils import *
 
 def postcodeList(request):
     postcodes = PostcodeInfo.objects.all()
-    return render(request, 'publicstats/all_house.html', {'postcodes': postcodes})
+    return 0
 
 def yearsForHouse(request, id):
     postcode = PostcodeInfo.objects.get(id=id)
     time = timeForHouse(postcode)
-    return render(request, 'publicstats/yearly_house.html', {'family1': time[0], 'family4': time[1]})
+    return 0
     
 def yearlyCost(postcode, size):
     return (CostLiving.objects.get(postcode=postcode, familySize=size).total()) * 12
