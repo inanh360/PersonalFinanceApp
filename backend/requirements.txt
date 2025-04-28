@@ -4,3 +4,4 @@ djangorestframework
 psycopg2-binary
 dj-rest-auth
 djoser
+django-environ

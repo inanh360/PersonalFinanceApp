@@ -11,6 +11,15 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+import os
+from urllib.parse import urlparse
+import environ
+
+# Initialize environment variables
+env = environ.Env()
+environ.Env.read_env()  # Reads the .env file
+
+DATABASE_URL = env('DATABASE_URL')
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -50,6 +59,7 @@ INSTALLED_APPS = [
     'reports',
     'dj_rest_auth',
     'djoser',
+    'django-environ',
 ]
 
 AUTH_USER_MODEL = 'users.User'
@@ -111,12 +121,21 @@ WSGI_APPLICATION = 'financeapp.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
 
+# Get the DATABASE_URL environment variable (defined in .env file)
+DATABASE_URL = os.getenv('DATABASE_URL', 'postgres://user:password@db:5432/mydatabase')
+result = urlparse(DATABASE_URL)
+
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': result.path[1:],  # Remove leading slash
+        'USER': result.username,
+        'PASSWORD': result.password,
+        'HOST': result.hostname,
+        'PORT': result.port,
     }
 }
+
 
 
 # Password validation

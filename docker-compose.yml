@@ -1,7 +1,7 @@
 services:
   backend:
     build: .
-    container_name: financeapp-backend 
+    container_name: financeapp-backend
     ports:
       - "8000:8000"
     command: >
@@ -25,7 +25,6 @@ services:
       - ./frontend:/frontend
     depends_on:
       - backend
-
 
   db:
     image: postgres:15
